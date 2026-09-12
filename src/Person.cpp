@@ -1,9 +1,8 @@
 #include "../include/Person.h"
 
-Person::Person(int id, std::string name, std::string phone) {
-    this->id = id;
-    this->name = name;
-    this->phone = phone;
-}
+using namespace std;
+
+Person::Person(int id, string name, string phone)
+    : id(id), name(name), phone(phone) {}
 
 Person::~Person() {}
