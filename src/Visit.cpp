@@ -1,33 +1,32 @@
 #include "../include/Visit.h"
 #include <iostream>
 
-Visit::Visit(std::string date, std::string doctorName, std::string diagnosis, double baseFee) {
-    this->date = date;
-    this->doctorName = doctorName;
-    this->diagnosis = diagnosis;
-    this->baseFee = baseFee;
-}
+using namespace std;
 
-std::string Visit::getDate() const { return date; }
-std::string Visit::getDoctorName() const { return doctorName; }
-std::string Visit::getDiagnosis() const { return diagnosis; }
+// Base Class Constructor using Initializer List
+Visit::Visit(string date, string doctorName, string diagnosis, double baseFee)
+    : date(date), doctorName(doctorName), diagnosis(diagnosis), baseFee(baseFee) {}
+
+string Visit::getDate() const { return date; }
+string Visit::getDoctorName() const { return doctorName; }
+string Visit::getDiagnosis() const { return diagnosis; }
 
 void Visit::displayVisit() const {
-    std::cout << date << " | Dr. " << doctorName << " | " << diagnosis << " | " << calculateFee() << " EGP" << std::endl;
+    cout << date << " | Dr. " << doctorName << " | " << diagnosis << " | " << calculateFee() << " EGP" << endl;
 }
 
 // Normal Visit Implementation
-NormalVisit::NormalVisit(std::string date, std::string doctorName, std::string diagnosis, double baseFee)
+NormalVisit::NormalVisit(string date, string doctorName, string diagnosis, double baseFee)
     : Visit(date, doctorName, diagnosis, baseFee) {}
 
 double NormalVisit::calculateFee() const {
     return baseFee; // Standard fee
 }
 
-// Emergency Visit Implementation (Adds extra charge, e.g., 50% extra)
-EmergencyVisit::EmergencyVisit(std::string date, std::string doctorName, std::string diagnosis, double baseFee)
+// Emergency Visit Implementation
+EmergencyVisit::EmergencyVisit(string date, string doctorName, string diagnosis, double baseFee)
     : Visit(date, doctorName, diagnosis, baseFee) {}
 
 double EmergencyVisit::calculateFee() const {
-    return baseFee + 100.0; 
+    return baseFee + 100.0; // Emergency charge
 }
