@@ -1,21 +1,21 @@
 #include "../include/VisitHistory.h"
-
 #include <iostream>
 
-VisitNode::VisitNode(Visit* v) {
-    visit = v;
-    next = nullptr;
-}
+using namespace std;
 
-VisitHistory::VisitHistory() { head = nullptr; }
+// VisitNode Constructor using Initializer List
+VisitNode::VisitNode(Visit* v) : visit(v), next(nullptr) {}
+
+// VisitHistory Constructor using Initializer List
+VisitHistory::VisitHistory() : head(nullptr) {}
 
 VisitHistory::~VisitHistory() {
     VisitNode* current = head;
     while (current != nullptr) {
         VisitNode* temp = current;
         current = current->next;
-        delete temp->visit;
-        delete temp;
+        delete temp->visit; // Free dynamically allocated Visit object
+        delete temp;        // Free the node itself
     }
 }
 
@@ -34,7 +34,7 @@ void VisitHistory::addVisit(Visit* v) {
 
 void VisitHistory::displayHistory() const {
     if (head == nullptr) {
-        std::cout << "No visit history available." << std::endl;
+        cout << "No visit history available." << endl;
         return;
     }
     VisitNode* temp = head;
@@ -51,6 +51,10 @@ double VisitHistory::calculateTotalRecursive(VisitNode* node) const {
     return node->visit->calculateFee() + calculateTotalRecursive(node->next);
 }
 
-double VisitHistory::calculateTotalFees() const { return calculateTotalRecursive(head); }
+double VisitHistory::calculateTotalFees() const { 
+    return calculateTotalRecursive(head); 
+}
 
-bool VisitHistory::isEmpty() const { return head == nullptr; }
+bool VisitHistory::isEmpty() const { 
+    return head == nullptr; 
+}
