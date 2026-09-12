@@ -24,24 +24,20 @@ class ClinicManager {
     ClinicManager();
     ~ClinicManager();
 
-    // Helper Input Validation Functions
     int getValidInt();
     double getValidDouble();
     std::string getValidLine();
 
-    // Patient Operations
     void addPatient(Patient* p);
     Patient* findPatientById(int id) const;
     void deletePatient(int id);
     void displayAllPatients() const;
     void sortPatients(int criterion);
 
-    // Doctor Operations
     void addDoctor(Doctor* d);
     Doctor* findDoctorById(int id) const;
     void displayAllDoctors() const;
 
-    // Waiting Room & Visits Operations
     void sendPatientToWaitingRoom(int patientId, bool isEmergency, std::string arrivalTime);
     void serveNextPatient(Doctor* doc, std::string date, std::string diagnosis, bool isEmergency);
     void displayWaitingRoom() const;
