@@ -200,7 +200,7 @@ void ClinicManager::displayAllDoctors() const {
     }
 }
 
-void ClinicManager::sendPatientToWaitingRoom(int patientId, bool isEmergency, std::string arrivalTime) {
+void ClinicManager::sendPatientToWaitingRoom(int patientId, bool isEmergency, string arrivalTime) {
     Patient* p = findPatientById(patientId);
     if (p == nullptr) {
         cout << "Error: Patient not found!\n";
@@ -211,7 +211,7 @@ void ClinicManager::sendPatientToWaitingRoom(int patientId, bool isEmergency, st
     cout << "Patient " << p->getName() << " added to waiting room (" << (isEmergency ? "Emergency" : "Normal") << ").\n";
 }
 
-void ClinicManager::serveNextPatient(Doctor* doc, std::string date, std::string diagnosis, bool isEmergency) {
+void ClinicManager::serveNextPatient(Doctor* doc, string date, string diagnosis, bool isEmergency) {
     if (doc == nullptr) {
         cout << "Error: Doctor is invalid or not found.\n";
         return;
