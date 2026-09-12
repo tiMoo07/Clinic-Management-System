@@ -3,11 +3,9 @@
 
 using namespace std;
 
-// PatientNode Constructor using Initializer List
 PatientNode::PatientNode(Patient* p, int prio)
     : patient(p), priority(prio), next(nullptr) {}
 
-// WaitingRoom Constructor using Initializer List
 WaitingRoom::WaitingRoom() : head(nullptr) {}
 
 WaitingRoom::~WaitingRoom() {
