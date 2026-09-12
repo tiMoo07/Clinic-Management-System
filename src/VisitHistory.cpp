@@ -3,10 +3,8 @@
 
 using namespace std;
 
-// VisitNode Constructor using Initializer List
 VisitNode::VisitNode(Visit* v) : visit(v), next(nullptr) {}
 
-// VisitHistory Constructor using Initializer List
 VisitHistory::VisitHistory() : head(nullptr) {}
 
 VisitHistory::~VisitHistory() {
@@ -14,8 +12,8 @@ VisitHistory::~VisitHistory() {
     while (current != nullptr) {
         VisitNode* temp = current;
         current = current->next;
-        delete temp->visit; // Free dynamically allocated Visit object
-        delete temp;        // Free the node itself
+        delete temp->visit; 
+        delete temp;        
     }
 }
 
