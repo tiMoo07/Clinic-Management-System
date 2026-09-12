@@ -1,15 +1,14 @@
 #include "../include/WaitingRoom.h"
 #include <iostream>
 
-PatientNode::PatientNode(Patient* p, int prio) {
-    patient = p;
-    priority = prio;
-    next = nullptr;
-}
+using namespace std;
 
-WaitingRoom::WaitingRoom() {
-    head = nullptr;
-}
+// PatientNode Constructor using Initializer List
+PatientNode::PatientNode(Patient* p, int prio)
+    : patient(p), priority(prio), next(nullptr) {}
+
+// WaitingRoom Constructor using Initializer List
+WaitingRoom::WaitingRoom() : head(nullptr) {}
 
 WaitingRoom::~WaitingRoom() {
     while (head != nullptr) {
@@ -49,16 +48,16 @@ Patient* WaitingRoom::callNextPatient() {
 
 void WaitingRoom::displayWaitingRoom() const {
     if (head == nullptr) {
-        std::cout << "Waiting room is empty." << std::endl;
+        cout << "Waiting room is empty." << endl;
         return;
     }
 
-    std::cout << "\n--- Patients in Waiting Room (Priority Queue) ---" << std::endl;
+    cout << "\n--- Patients in Waiting Room (Priority Queue) ---" << endl;
     PatientNode* temp = head;
     while (temp != nullptr) {
-        std::cout << "[Priority " << temp->priority << "] ID: " 
-                  << temp->patient->getId() << " - Name: " 
-                  << temp->patient->getName() << std::endl;
+        cout << "[Priority " << temp->priority << "] ID: " 
+             << temp->patient->getId() << " - Name: " 
+             << temp->patient->getName() << endl;
         temp = temp->next;
     }
 }
