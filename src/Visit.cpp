@@ -3,7 +3,6 @@
 
 using namespace std;
 
-// Base Class Constructor using Initializer List
 Visit::Visit(string date, string doctorName, string diagnosis, double baseFee)
     : date(date), doctorName(doctorName), diagnosis(diagnosis), baseFee(baseFee) {}
 
@@ -15,18 +14,16 @@ void Visit::displayVisit() const {
     cout << date << " | Dr. " << doctorName << " | " << diagnosis << " | " << calculateFee() << " EGP" << endl;
 }
 
-// Normal Visit Implementation
 NormalVisit::NormalVisit(string date, string doctorName, string diagnosis, double baseFee)
     : Visit(date, doctorName, diagnosis, baseFee) {}
 
 double NormalVisit::calculateFee() const {
-    return baseFee; // Standard fee
+    return baseFee; 
 }
 
-// Emergency Visit Implementation
 EmergencyVisit::EmergencyVisit(string date, string doctorName, string diagnosis, double baseFee)
     : Visit(date, doctorName, diagnosis, baseFee) {}
 
 double EmergencyVisit::calculateFee() const {
-    return baseFee + 100.0; // Emergency charge
+    return baseFee + 100.0;
 }
