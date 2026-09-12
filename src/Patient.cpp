@@ -1,45 +1,40 @@
 #include "../include/Patient.h"
-#include <iostream>
-#include <iomanip> 
 
-Patient::Patient(int id, std::string name, std::string phone, int age)
-    : Person(id, name, phone) {
+#include <iomanip>
+#include <iostream>
+
+using namespace std;
+
+Patient::Patient(int id, string name, string phone, int age) : Person(id, name, phone) {
     this->age = age;
 }
 
-void Patient::addVisit(Visit* v) {
-    history.addVisit(v);
-}
+void Patient::addVisit(Visit* v) { history.addVisit(v); }
 
 void Patient::displayVisitHistory() const {
-    std::cout << "\nVISIT HISTORY FOR PATIENT: " << name << std::endl;
+    cout << "\nVISIT HISTORY FOR PATIENT: " << name << endl;
     history.displayHistory();
-    std::cout << "Total Spent: " << history.calculateTotalFees() << " EGP" << std::endl;
+    cout << "Total Spent: " << history.calculateTotalFees() << " EGP" << endl;
 }
 
-double Patient::getTotalSpent() const {
-    return history.calculateTotalFees();
-}
+double Patient::getTotalSpent() const { return history.calculateTotalFees(); }
 
 void Patient::displayInfo() const {
-    std::cout << "--- Patient Details ---" << std::endl;
-    std::cout << "ID: " << id << std::endl;
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "Phone: " << phone << std::endl;
-    std::cout << "Age: " << age << std::endl;
+    cout << "--- Patient Details ---" << endl;
+    cout << "ID: " << id << endl;
+    cout << "Name: " << name << endl;
+    cout << "Phone: " << phone << endl;
+    cout << "Age: " << age << endl;
 }
 
 int Patient::getId() const { return id; }
-std::string Patient::getName() const { return name; }
-std::string Patient::getPhone() const { return phone; }
+string Patient::getName() const { return name; }
+string Patient::getPhone() const { return phone; }
 int Patient::getAge() const { return age; }
 void Patient::setAge(int age) { this->age = age; }
-void Patient::setPhone(std::string phone) { this->phone = phone; }
+void Patient::setPhone(string phone) { this->phone = phone; }
 
-std::ostream& operator<<(std::ostream& os, const Patient& p) {
-    os << std::left << std::setw(8) << p.id 
-       << std::setw(20) << p.name 
-       << std::setw(8) << p.age 
-       << p.phone;
+ostream& operator<<(ostream& os, const Patient& p) {
+    os << left << setw(8) << p.id << setw(20) << p.name << setw(8) << p.age << p.phone;
     return os;
 }
